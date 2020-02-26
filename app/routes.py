@@ -14,6 +14,8 @@ from fastapi import Path, Query, Body, Cookie, Header, Form
 # We can use pydantic.Field as more global param definition
 
 from fastapi import HTTPException
+
+# for encoding/decoding using pydantic model
 from fastapi.encoders import jsonable_encoder
 
 from app import app
@@ -22,7 +24,7 @@ from app.models import Item, User
 items = {}
 
 
-# For routes you can use APIRouter, check documentation
+# For routes you can use APIRouter, see docs...
 # DB connection may be any orm or anything, idk... SQLAlchemy as an example
 # There are also BackgroundTasks classes in fastapi, see docs...
 # You can customize and configure swagger with additional params, see docs...
@@ -67,7 +69,7 @@ async def path(
 
 
 # response_model used for conversion, validation, limitation of output, etc.#
-# different parameters of response can be specified there, see documentation
+# different parameters of response can be specified there, see docs...
 @app.post('/', response_model=Item)
 async def post(item: Item, item_id: int):
     items[item_id] = item
